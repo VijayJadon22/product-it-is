@@ -1,9 +1,12 @@
 import express from "express";
 import { ENV } from "./config/env";
+import { clerkMiddleware } from "@clerk/express";
 
 const app = express();
 
 const PORT = ENV.PORT || 3002;
+
+app.use(clerkMiddleware());
 
 app.get("/", (req, res) => {
   return res.json({ message: "You app is live" });
